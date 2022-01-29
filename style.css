@@ -6,7 +6,7 @@
 
 .frame {
   background-color: rgb(62, 60, 59);
-  height: 340px;
+  height: 365px;
   width: 310px;
   margin: 20px;
   border-radius: 20px;
@@ -32,7 +32,7 @@
   border: solid 1px black;
   border-radius: 8px;
   margin: 5px;
-  padding: 5px;
+  padding: 8px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
