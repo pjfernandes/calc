@@ -19,6 +19,13 @@
   height: 80px;
   margin: 20px;
   border: solid 1px black;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 30px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 5px;
+
 }
 
 .keyboard {
@@ -52,4 +59,18 @@
 
 .clear:hover {
   background-color: rgb(167, 167, 167);
+}
+
+footer {
+  text-align: center;
+  padding-top: 5px;
+}
+
+footer > a {
+  color: rgb(184, 20, 20);
+  text-decoration: none;
+}
+
+footer > a:hover {
+  color: rgb(138, 8, 8);
 }
