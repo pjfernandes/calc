@@ -14,6 +14,11 @@ const clearDisplay = (() => {
   display.innerText = "";
 })
 
+const getOperator = (() => {
+  const display = document.querySelector(".display");
+  return display.innerText[0];
+});
+
 //Clear button event
 const clear = document.querySelector(".clear");
 clear.addEventListener("click", () => {
@@ -22,6 +27,7 @@ clear.addEventListener("click", () => {
 
 //Operations
 let numbers = [];
+let operator;
 
 const keys = document.querySelectorAll(".num");
 keys.forEach((element) => {
@@ -38,8 +44,6 @@ operations.forEach((element) => {
     numbers.push(getNumber());
     clearDisplay();
     populateDisplay(event.target.innerText);
-    numbers.push()
-    console.log(numbers);
   });
 });
 
@@ -47,5 +51,6 @@ const equals = document.querySelector(".equals")
 
 equals.addEventListener("click", (event) => {
   numbers.push(getNumber());
-  console.log(numbers);
+  operator = getOperator();
+  console.log(operator);
 });
