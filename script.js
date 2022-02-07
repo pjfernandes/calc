@@ -29,16 +29,12 @@ const clear = document.querySelector(".clear");
 clear.addEventListener("click", () => {
   clearDisplay("last");
   clearDisplay("next");
-  numbers = [];
-  operator = [];
+
   nextNum = undefined;
   first = true;
 });
 /////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////Operations
-let numbers = [];
-let operator = [];
-
 let nextNum;
 let first = true;
 
@@ -47,7 +43,7 @@ keys.forEach((element) => {
   element.addEventListener("click", (event) => {
     populateDisplay(event.target.innerText, "next");
     if (first) {
-      nextNum = getNumber("next")
+      nextNum = getNumber("next");
      };
   });
 });
@@ -55,32 +51,33 @@ keys.forEach((element) => {
 const operations = document.querySelectorAll(".op")
 operations.forEach((element) => {
   element.addEventListener("click", (event) => {
-    //nextNum = nextNum + getNumber("next");
+
     if (first) {
       nextNum = nextNum;
       first = false;
     } else {
-      nextNum = operate(nextNum, getNumber("next"), event.target.innerText);
+      nextNum = operate(nextNum, getNumber("next"), getOperator("next"));
     }
     clearDisplay("last");
     populateDisplay(nextNum, "last");
     clearDisplay("next");
     populateDisplay(event.target.innerText, "next");
-    operator.push(getOperator("next"));
   });
 });
 
 const equals = document.querySelector(".equals")
 equals.addEventListener("click", (event) => {
-  numbers.push(getNumber("next"));
-  //operator.push(getOperator("next"));
-  populateDisplay(getDisplay("next"), "last")
+  clearDisplay("last");
+  populateDisplay(
+    operate(nextNum, getNumber("next"), getOperator("next")
+    ), "last");
   clearDisplay("next");
 
-  console.log(operator);
-  console.log(numbers);
+});
 
-
+const dot = document.querySelector(".dot");
+dot.addEventListener("click", (event) => {
+  populateDisplay(".", "next");
 });
 
 /////////////////////////////////////////////////Operations functions
@@ -97,7 +94,11 @@ function multiply(x, y) {
 }
 
 function divide(x, y) {
+  if (y !== 0) {
   return x/y;
+  } else {
+    "Error"
+  }
 }
 
 function operate(x, y, op) {
