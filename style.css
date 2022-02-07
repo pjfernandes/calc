@@ -26,6 +26,8 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  word-wrap: break-word;
+  word-break: break-all;
 
 }
 

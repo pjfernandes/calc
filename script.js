@@ -31,43 +31,50 @@ clear.addEventListener("click", () => {
   clearDisplay("next");
   numbers = [];
   operator = [];
+  nextNum = undefined;
+  first = true;
 });
 /////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////Operations
 let numbers = [];
 let operator = [];
 
+let nextNum;
+let first = true;
+
 const keys = document.querySelectorAll(".num");
 keys.forEach((element) => {
-
   element.addEventListener("click", (event) => {
     populateDisplay(event.target.innerText, "next");
+    if (first) {
+      nextNum = getNumber("next")
+     };
   });
-
 });
 
 const operations = document.querySelectorAll(".op")
 operations.forEach((element) => {
   element.addEventListener("click", (event) => {
-    numbers.push(getNumber("next"));
-    populateDisplay(getDisplay("next"), "last");
+    //nextNum = nextNum + getNumber("next");
+    if (first) {
+      nextNum = nextNum;
+      first = false;
+    } else {
+      nextNum = operate(nextNum, getNumber("next"), event.target.innerText);
+    }
+    clearDisplay("last");
+    populateDisplay(nextNum, "last");
     clearDisplay("next");
     populateDisplay(event.target.innerText, "next");
     operator.push(getOperator("next"));
-    console.log(operator);
-    console.log(numbers);
-
   });
 });
 
 const equals = document.querySelector(".equals")
-
 equals.addEventListener("click", (event) => {
   numbers.push(getNumber("next"));
-  operator.push(getOperator("next"));
+  //operator.push(getOperator("next"));
   populateDisplay(getDisplay("next"), "last")
-
-
   clearDisplay("next");
 
   console.log(operator);
