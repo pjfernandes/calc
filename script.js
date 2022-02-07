@@ -6,7 +6,7 @@ const populateDisplay = ((input, screen) => {
 
 const getNumber = ((screen) => {
   const display = document.querySelector(`.${screen}`);
-  return Math.abs(parseFloat(display.innerText.match(/[0-9]/)[0]));
+  return Math.abs(parseFloat(display.innerText.match(/[1-9]\d*(\.\d+)?$/)[0]));
 });
 
 const clearDisplay = ((screen) => {
@@ -21,7 +21,7 @@ const getOperator = ((screen) => {
 
 const getDisplay = ((screen) => {
   const display = document.querySelector(`.${screen}`);
-  return display.innerText;
+  return parseFloat(display.innerText);
 });
 /////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////Clear button event
