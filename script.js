@@ -6,7 +6,7 @@ const populateDisplay = ((input, screen) => {
 
 const getNumber = ((screen) => {
   const display = document.querySelector(`.${screen}`);
-  return Math.abs(parseFloat(display.innerText.match(/[1-9]\d*(\.\d+)?$/)[0]));
+  return Math.abs(parseFloat(display.innerText.match(/[0-9]\d*(\.\d+)?$/)[0]));
 });
 
 const clearDisplay = ((screen) => {
@@ -44,7 +44,7 @@ keys.forEach((element) => {
     populateDisplay(event.target.innerText, "next");
     if (first) {
       nextNum = getNumber("next");
-     };
+    };
   });
 });
 
@@ -82,20 +82,20 @@ dot.addEventListener("click", (event) => {
 
 /////////////////////////////////////////////////Operations functions
 function add(x, y) {
-  return x+y;
+  return x + y;
 }
 
 function subtract(x, y) {
-  return x-y;
+  return x - y;
 }
 
 function multiply(x, y) {
-  return x*y;
+  return x * y;
 }
 
 function divide(x, y) {
   if (y !== 0) {
-  return x/y;
+    return x / y;
   } else {
     "Error"
   }
@@ -104,13 +104,13 @@ function divide(x, y) {
 function operate(x, y, op) {
 
   if (op === "+") {
-      return add(x, y);
+    return add(x, y);
   } else if (op === "-") {
-      return subtract(x, y);
+    return subtract(x, y);
   } else if (op === "x") {
-      return multiply(x, y);
+    return multiply(x, y);
   } else if (op === "/") {
-      return divide(x, y);
+    return divide(x, y);
   }
 
 }
